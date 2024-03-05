@@ -88,11 +88,11 @@ namespace Matrix
     class SobelFilter : MatrixFilters
     {
         //Sobel operator kernel for horizontal pixel changes
-        private static double[,] xSobel
+        private static float[,] xSobel
         {
             get
             {
-                return new double[,]
+                return new float[,]
                 {
             { -1, 0, 1 },
             { -2, 0, 2 },
@@ -102,11 +102,11 @@ namespace Matrix
         }
 
         //Sobel operator kernel for vertical pixel changes
-        private static double[,] ySobel
+        private static float[,] ySobel
         {
             get
             {
-                return new double[,]
+                return new float[,]
                 {
             {  1,  2,  1 },
             {  0,  0,  0 },
@@ -115,20 +115,19 @@ namespace Matrix
             }
         }
 
-        public void createSobelKernel()
+        public SobelFilter()
         {
             int sizeX = 3;
             int sizeY = 3;
             kernel = new float[sizeX, sizeY];
-            for (int y = 1; y < sizeY - 1; y++)
+            for (int y = 0; y < sizeY; y++)
             {
-                for (int x = 1; x < sizeX - 1; x++)
+                for (int x = 0; x < sizeX; x++)
                 {
-                    
+                    kernel[y, x] = ySobel[y,x] * xSobel[y,x];
                 }
             }
         }
-
     }
 
 }

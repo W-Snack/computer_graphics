@@ -87,5 +87,13 @@ namespace Matrix
             pictureBox1.Image = resultImage;
             pictureBox1.Refresh();
         }
+
+        private void фильтрСобеляToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Filters filter = new SobelFilter();
+            Bitmap resultImage = filter.processImage(image);
+            pictureBox1.Image = resultImage;
+            pictureBox1.Refresh();
+        }
     }
 }
